@@ -5,6 +5,9 @@ vim.g.have_nerd_font = true
 vim.o.number = true
 vim.o.relativenumber = true
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 vim.o.mouse = 'a'
 
 vim.o.showmode = false
@@ -397,7 +400,6 @@ require('lazy').setup({
       words = { enabled = true },
     },
   },
-
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
