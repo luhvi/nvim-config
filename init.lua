@@ -45,6 +45,8 @@ vim.o.confirm = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.diagnostic.enable(false)
+
 vim.diagnostic.config {
   update_in_insert = false,
   severity_sort = true,
@@ -55,7 +57,7 @@ vim.diagnostic.config {
   underline = {
     severity = { min = vim.diagnostic.severity.WARN }
   },
-  virtual_text = true,
+  virtual_text = false,
   virtual_lines = false,
   jump = {
     float = true
@@ -245,6 +247,7 @@ require('lazy').setup({
             },
           },
         },
+        clangd = {},
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
@@ -412,7 +415,7 @@ require('lazy').setup({
     build = ':TSUpdate',
     branch = 'main',
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
       require('nvim-treesitter').install(parsers)
 
       local function treesitter_try_attach(buf, language)
